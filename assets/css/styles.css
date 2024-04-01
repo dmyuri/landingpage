@@ -1,0 +1,404 @@
+:root {
+    --primary-color: #1f1f1f;
+    --secondary-color: red;
+    --white-color: #fff;
+    --light-gray-color: #ddd;
+    --gap: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+h3 {
+    font-size: 5rem;
+}
+h4 {
+    font-size: 4.5rem;
+}
+h5 {
+    font-size: 4rem;
+}
+h6 {
+    font-size: 3.5rem;
+}
+a {
+    text-decoration: none;
+}
+
+.responsive-table {
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+table {
+    min-width: 36rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table caption {
+    font-style: italic;
+    font-size: 1.6rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+table td, table th {
+    white-space: nowrap; /* não permite que qeubre o texto na tabela */
+    text-align: left;
+    padding: 1rem;
+    border: 0.1rem solid var(--light-gray-color);
+}
+
+tfoot td, table th {
+    background: var(--light-gray-color)
+}
+.main-bg {
+    background-image: url('../img/confetti-doodles.png');
+    background-size: cover;
+    background-position: center center;
+    color: var(--white-color);
+}
+.white-bg {
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+.main-content {
+    max-width: 120rem;
+    margin: auto;
+    padding: 10rem var(--gap);
+}
+
+.section {
+    min-height: 100vh;
+}
+
+.menu-spacing {
+    height: 65px;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 0.1rem solid var(--light-gray-color);
+}
+
+.menu-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.menu h1 {
+    font-size: 2.3rem;
+    color: var(--primary-color);
+}
+.menu h1 a {
+    color: inherit;
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+}
+.menu ul li a {
+    display: block;
+    padding: 2rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    position: relative; /* Determina que a posição do elemento é relativa ao pai e não body */
+}
+.menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0;
+    height: 0.2rem;
+    background: var(--secondary-color); 
+    transition: all 300ms ease-in-out;
+}
+.menu ul li a:hover::after {
+    width: 50%;
+    left: 25%;
+}
+
+.intro-content {
+    position: relative;
+    /* top: -8rem; */
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--gap);
+    min-height: 100vh;
+}
+
+.intro-text-content, .intro-img {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.intro-text-content h2 {
+    font-size: 6rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.intro-img img,
+.intro-img svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.top3-content {
+    max-width: 64rem;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap; /* nowrap não permite que a coluna se quebre */
+    justify-content: center;
+    gap: var(--gap);
+    text-align: center;
+}
+
+.grid-one-content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.grid-description {
+    margin-bottom: 10rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    counter-reset: grid-counter; /* contador(grid-counter é o nome que eu escolhi) */
+}
+
+.grid h3 {
+    font-size: 3rem;
+    position: relative; /* utilizado para que o contador(before) fique dentro do h3, senão ele vai para o topo dqa pagina */
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+}
+
+/* Criei um contador na grid e incrementei nesse elemento */
+.grid h3::before {
+    counter-increment: grid-counter;
+    content: counter(grid-counter);
+    position: absolute;
+    font-size: 8rem;
+    font-style: italic;
+    top: -4rem;
+    left: -2rem;
+    transform: rotate(5deg); /* faz o elemento rotacionar 5graus */
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 36rem;
+    max-height: 36rem;
+    overflow: hidden;
+}
+
+.gallery-img img {
+    transition: all 300ms ease-in-out;
+}
+
+.gallery-img img:hover {
+    transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+    cursor: pointer;
+}
+
+.contact-form {
+    grid-column: span 2;
+}
+
+.contact-form .form-grid {
+    border: none;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--gap);
+}
+
+.form-grid legend {
+    font-style: italic;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+}
+
+.form-group {
+    flex: 1 1 32rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    border: none;
+    background: var(--white-color);
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 3rem;
+}
+
+body .full-width {
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+.form-group button {
+    border: 0.5rem solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+
+.form-group ::placeholder {
+    font-size: 2rem;
+    color: var(--light-gray-color);
+}
+
+.footer {
+    padding: 5rem;
+    text-align: center;
+    font-weight: bold;    
+}
+
+.close-menu {
+    display: none;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--white-color);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.5rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 800px) {
+    .intro-content, .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .gallery-img img {
+        width: 100%;
+    }
+
+    .grid-one-content {
+        display: block;
+    }
+
+    .menu {
+        bottom: 0;
+        text-align: center;
+    }
+
+    .menu-content, .menu-content ul {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .menu-content {
+        height: 100vh;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .close-menu {
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
+
+    .close-menu-label::after {
+        content: '☰';
+        position: fixed;
+        z-index: 2;
+        top: 2rem;
+        right: 2rem;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        font-size: 3rem;
+        line-height: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .close-menu:checked~.menu { /* faz aparecer o menu quando clicar nas 3 lines */ 
+        display: block;
+    }
+
+    .close-menu:checked~.close-menu-label::after {
+        content: '×';
+        width: 3rem;
+        height: 3rem;
+    }
+
+}
